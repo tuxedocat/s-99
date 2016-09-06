@@ -1,12 +1,11 @@
 package s99
 
 object P04 {
-  def length[T](lst: List[T]): Int = {
+  def length[T](list: List[T]): Int = {
     def inner(l: List[T], c: Int): Int = l match {
-      case (x :: xs) => inner(xs, c + 1)
-      case (x :: Nil) => c
+      case x :: xs => inner(xs, c + 1)
       case _ => c
     }
-    inner(lst, 0)
+    inner(list, 0)
   }
 }
