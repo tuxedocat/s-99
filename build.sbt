@@ -1,29 +1,28 @@
 name := "s-99"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.2"
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.0" % "test",
-  "org.scalacheck" %% "scalacheck" % "1.13.2" % "test"
+  "org.scalatest" % "scalatest_2.12" % "3.0.3",
+  "org.scalacheck" % "scalacheck_2.12" % "1.13.5"
 )
 
 val unusedWarnings = (
   "-Ywarn-unused" ::
-  "-Ywarn-unused-import" ::
-  Nil
+    "-Ywarn-unused-import" ::
+    Nil
 )
 
 scalacOptions ++= (
   "-deprecation" ::
-  "-unchecked" ::
-  "-Xlint" ::
-  "-language:existentials" ::
-  "-language:higherKinds" ::
-  "-language:implicitConversions" ::
-  "-Yno-adapted-args" ::
-  Nil
+    "-unchecked" ::
+    "-Xlint" ::
+    "-language:existentials" ::
+    "-language:higherKinds" ::
+    "-language:implicitConversions" ::
+    "-Yno-adapted-args" ::
+    Nil
 ) ::: unusedWarnings
 
 Seq(Compile, Test).flatMap(c =>
-  scalacOptions in (c, console) ~= {_.filterNot(unusedWarnings.toSet)}
-)
+  scalacOptions in (c, console) ~= { _.filterNot(unusedWarnings.toSet) })
